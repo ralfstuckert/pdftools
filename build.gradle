@@ -1,0 +1,45 @@
+buildscript {
+    ext.kotlin_version = '1.1.51'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.1.51"
+}
+
+repositories {
+    mavenCentral()
+}
+
+version = '0.0.1-SNAPSHOT'
+group = 'de.compeople.mat'
+sourceCompatibility = 1.8
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
+    compile("org.apache.pdfbox:pdfbox:2.0.4")
+    testCompile "org.jetbrains.kotlin:kotlin-test"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit"
+}
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        suppressWarnings = true
+    }
+}
+
