@@ -19,6 +19,8 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'kotlin'
+
 version = '0.0.1-SNAPSHOT'
 group = 'de.compeople.mat'
 sourceCompatibility = 1.8
@@ -27,6 +29,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8"
     compile("org.apache.pdfbox:pdfbox:2.0.4")
+    compile("us.jimschubert:kopper-typed:0.0.3")
     testCompile "org.jetbrains.kotlin:kotlin-test"
     testCompile "org.jetbrains.kotlin:kotlin-test-junit"
 }
