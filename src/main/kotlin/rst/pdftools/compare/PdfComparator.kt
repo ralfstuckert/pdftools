@@ -41,7 +41,8 @@ class PdfComparator(val diffImageDirectory: File,
                         is ImageCompareResult.SizeDiffers ->
                             pageCompareDifferences.add(PdfPageCompareResult.SizeDiffers(imageCompareResult))
                         is ImageCompareResult.ContentDiffers -> {
-                            val diffImageFile = writeDiffImage(imageCompareResult.diffImage, expectedFileName, pageIndex)
+                            val diffImageFile = writeDiffImage(imageCompareResult.diffImage, diffImageDirectory,
+                                    expectedFileName, pageIndex)
                             pageCompareDifferences.add(PdfPageCompareResult.ContentDiffers(pageIndex,
                                     imageCompareResult.diffPixelCount, diffImageFile))
                         }
@@ -58,9 +59,9 @@ class PdfComparator(val diffImageDirectory: File,
     }
 
 
-    private fun writeDiffImage(image: BufferedImage, expectedFileName: String, pageIndex: PageIndex): File {
+    private fun writeDiffImage(image: BufferedImage, directory: File, expectedFileName: String, pageIndex: PageIndex): File {
         val (name, ext) = expectedFileName.filename()
-        val diffFile = File("${name}.page-${pageIndex}-diff.png")
+        val diffFile = File(directory, "${name}.page-${pageIndex}-diff.png")
         ImageIO.write(image, "png", diffFile)
         return diffFile
     }
