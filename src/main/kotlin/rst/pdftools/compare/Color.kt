@@ -10,9 +10,11 @@ fun Color.normalizedDistanceTo(other:Color): Double {
     val distanceG = green - other.green
     val distanceB = blue - other.blue
 
-    return Math.sqrt((distanceR * distanceR +
+    val distance = Math.sqrt((distanceR * distanceR +
             distanceG * distanceG +
-            distanceB * distanceB).toDouble())  / MAX_VECTOR_LENGTH
+            distanceB * distanceB).toDouble())
+
+    return distance / MAX_VECTOR_LENGTH
 }
 
 fun Int.asColor(): Color = Color(this)

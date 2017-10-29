@@ -2,9 +2,8 @@ package rst.pdftools.compare
 
 import java.awt.Color
 import java.awt.image.BufferedImage
-import java.io.IOException
-
 import java.awt.image.DataBufferInt
+import java.io.IOException
 import java.util.stream.IntStream
 
 @Throws(IOException::class)

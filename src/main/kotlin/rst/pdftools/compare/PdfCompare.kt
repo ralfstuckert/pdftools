@@ -14,7 +14,7 @@ fun main(args: Array<String>) {
     val expected = checkFileParameter(pdfArgs, pdfArgs.expected, "expected")
     val actual = checkFileParameter(pdfArgs, pdfArgs.actual, "actual")
     val resolution = checkParameter(pdfArgs, pdfArgs.resolution, "resolution")
-    val tolerance = checkParameter(pdfArgs, pdfArgs.resolution, "tolerance")
+    val tolerance = checkParameter(pdfArgs, pdfArgs.tolerance, "tolerance")
 
     val comparator = PdfComparator(diffDirectory, resolution, tolerance)
     val compareResult = comparator.comparePdfs(expected, actual)
@@ -32,9 +32,6 @@ fun main(args: Array<String>) {
 
 }
 
-fun PdfCompareResult.toJson() {
-
-}
 
 fun checkDirectoryParameter(args: PdfCompareArgs, parameter: String?, name: String): File {
     val file = checkFileParameter(args, parameter, name)
