@@ -99,7 +99,7 @@ abstract sealed class PdfPageCompareResult() {
 
     class Identical : PdfPageCompareResult() {
         override fun toJson(): String = """{
-            |"differs":"false"
+            |"differs":false
             |}""".trimMargin()
     }
 
@@ -109,15 +109,15 @@ abstract sealed class PdfPageCompareResult() {
                 diff.actualWidth, diff.actualHeight)
 
         override fun toJson(): String = """{
-            |"differs":"false",
+            |"differs":true,
             |"reason":"size",
             |"expected": {
-                |"width":"$expectedWidth",
-                |"height":"$expectedHeight"
+                |"width":$expectedWidth,
+                |"height":$expectedHeight
             |"},
             |"actual": {
-                |"width":"$actualWidth",
-                |"height":"$actualHeight"
+                |"width":$actualWidth,
+                |"height":$actualHeight
             |}
         |}""".trimMargin()
     }
@@ -127,10 +127,10 @@ abstract sealed class PdfPageCompareResult() {
                               val diffImageFile: File) : PdfPageCompareResult() {
 
         override fun toJson(): String = """{
-            |"differs":"false",
+            |"differs":true,
             |"reason":"content",
-            |"pageIndex": "$pageIndex",
-            |"diffPixelCount": "$diffPixelCount",
+            |"pageIndex": $pageIndex,
+            |"diffPixelCount": $diffPixelCount,
             |"diffImageFile": "${diffImageFile.absolutePath}"
         |}""".trimMargin()
 
@@ -144,20 +144,20 @@ abstract sealed class PdfCompareResult {
 
     class Identical : PdfCompareResult() {
         override fun toJson(): String = """{
-            |"differs":"false"
+            |"differs":false
             |}""".trimMargin()
     }
 
     class PageCountDiffers(val expectedPageCount: Int, val actualPageCount: Int) : PdfCompareResult() {
         override fun toJson(): String = """{
-            |"differs":"true",
+            |"differs":true,
             |"reason":"page count differs"
             |}""".trimMargin()
     }
 
     class ContentDiffers(val differentPages: List<PdfPageCompareResult>) : PdfCompareResult() {
         override fun toJson(): String = """{
-            |"differs":"true",
+            |"differs":true,
             |"reason":"page content differs",
             |"differentPages": ${differentPages.joinToString(prefix = "[", postfix = "]", transform = PdfPageCompareResult::toJson)}
             |}""".trimMargin()
