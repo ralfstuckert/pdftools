@@ -1,5 +1,6 @@
 package rst.pdftools.compare
 
+import us.jimschubert.kopper.typed.BooleanArgument
 import us.jimschubert.kopper.typed.NumericArgument
 import us.jimschubert.kopper.typed.StringArgument
 import us.jimschubert.kopper.typed.TypedArgumentParser
@@ -9,6 +10,11 @@ import kotlin.system.exitProcess
 fun main(args: Array<String>) {
 
     val pdfArgs = PdfCompareArgs(args)
+
+    if (pdfArgs.help) {
+        println(pdfArgs.printHelp())
+        return
+    }
 
     val diffDirectory = checkDirectoryParameter(pdfArgs, pdfArgs.diffDirectory, "diffDirectory")
     val expected = checkFileParameter(pdfArgs, pdfArgs.expected, "expected")
@@ -33,31 +39,31 @@ fun main(args: Array<String>) {
 }
 
 
-fun checkDirectoryParameter(args: PdfCompareArgs, parameter: String?, name: String): File {
-    val file = checkFileParameter(args, parameter, name)
+fun checkDirectoryParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: String): File {
+    val file = checkFileParameter(pdfArgs, parameter, name)
     if (!file.isDirectory()) {
         println("file given as parameter $name is not a directory")
-        args.printHelp()
+        println(pdfArgs.printHelp())
         exitProcess(-1)
     }
     return file
 }
 
-fun checkFileParameter(args: PdfCompareArgs, parameter: String?, name: String): File {
-    val path = checkParameter(args, parameter, name)
+fun checkFileParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: String): File {
+    val path = checkParameter(pdfArgs, parameter, name)
     val file = File(path)
     if (!file.exists()) {
         println("file given as parameter $name does not exist")
-        args.printHelp()
+        println(pdfArgs.printHelp())
         exitProcess(-1)
     }
     return file
 }
 
-fun <T> checkParameter(args: PdfCompareArgs, parameter: T?, name: String): T {
+fun <T> checkParameter(pdfArgs: PdfCompareArgs, parameter: T?, name: String): T {
     if (parameter == null || parameter == "") {
         println("parameter $name is missing")
-        args.printHelp()
+        println(pdfArgs.printHelp())
         exitProcess(-1)
     } else {
         return parameter
@@ -66,6 +72,10 @@ fun <T> checkParameter(args: PdfCompareArgs, parameter: T?, name: String): T {
 
 class PdfCompareArgs(args: Array<String>) : TypedArgumentParser(args,
         "pdfcompare", "compares two given PDFs by comparing images rendered from each page") {
+
+    val help by BooleanArgument(self, "h",
+            description = "Prints this help"
+    )
 
     val diffDirectory by StringArgument(self, "d",
             description = "The directory to write the diff images to"
