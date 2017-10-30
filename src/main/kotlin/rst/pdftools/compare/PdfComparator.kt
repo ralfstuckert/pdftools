@@ -1,5 +1,8 @@
 package rst.pdftools.compare
 
+import com.github.salomonbrys.kotson.jsonArray
+import com.github.salomonbrys.kotson.jsonObject
+import com.google.gson.JsonObject
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.rendering.ImageType
 import org.apache.pdfbox.rendering.PDFRenderer
@@ -30,7 +33,7 @@ class PdfComparator(val diffImageDirectory: File,
             PDDocument.load(expected).use { expectedDoc ->
 
                 if (actualDoc.numberOfPages != expectedDoc.numberOfPages) {
-                    return PdfCompareResult.PageCountDiffers(actualDoc.numberOfPages, expectedDoc.numberOfPages)
+                    return PdfCompareResult.PageCountDiffers(expectedDoc.numberOfPages, actualDoc.numberOfPages)
                 }
 
                 val pageCompareDifferences = mutableListOf<PdfPageCompareResult>()
@@ -50,7 +53,7 @@ class PdfComparator(val diffImageDirectory: File,
                 }
 
                 if (pageCompareDifferences.isEmpty()) {
-                    return PdfCompareResult.Identical()
+                    return PdfCompareResult.Identical
                 }
 
                 return PdfCompareResult.ContentDiffers(pageCompareDifferences)
@@ -95,12 +98,12 @@ fun PDDocument.toImage(pageIndex: PageIndex, resolution: Resolution): BufferedIm
 
 abstract sealed class PdfPageCompareResult() {
 
-    abstract fun toJson(): String
+    abstract fun toJson(): JsonObject
 
-    class Identical : PdfPageCompareResult() {
-        override fun toJson(): String = """{
-            |"differs":false
-            |}""".trimMargin()
+    object Identical : PdfPageCompareResult() {
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to false
+        )
     }
 
     data class SizeDiffers(val expectedWidth: Int, val expectedHeight: Int,
@@ -108,58 +111,57 @@ abstract sealed class PdfPageCompareResult() {
         constructor(diff: ImageCompareResult.SizeDiffers) : this(diff.expectedWidth, diff.expectedHeight,
                 diff.actualWidth, diff.actualHeight)
 
-        override fun toJson(): String = """{
-            |"differs":true,
-            |"reason":"size",
-            |"expected": {
-                |"width":$expectedWidth,
-                |"height":$expectedHeight
-            |"},
-            |"actual": {
-                |"width":$actualWidth,
-                |"height":$actualHeight
-            |}
-        |}""".trimMargin()
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to true,
+                "reason" to "size",
+                "expected" to jsonObject(
+                        "width" to expectedWidth,
+                        "height" to expectedHeight
+                ),
+                "actual" to jsonObject(
+                        "width" to actualWidth,
+                        "height" to actualHeight
+                )
+        )
     }
 
     data class ContentDiffers(val pageIndex: PageIndex,
                               val diffPixelCount: Int,
                               val diffImageFile: File) : PdfPageCompareResult() {
 
-        override fun toJson(): String = """{
-            |"differs":true,
-            |"reason":"content",
-            |"pageIndex": $pageIndex,
-            |"diffPixelCount": $diffPixelCount,
-            |"diffImageFile": "${diffImageFile.absolutePath}"
-        |}""".trimMargin()
-
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to true,
+                "reason" to "content",
+                "pageIndex" to pageIndex,
+                "diffPixelCount" to diffPixelCount,
+                "diffImageFile" to diffImageFile.absolutePath
+        )
     }
 
 }
 
 abstract sealed class PdfCompareResult {
 
-    abstract fun toJson(): String
+    abstract fun toJson(): JsonObject
 
-    class Identical : PdfCompareResult() {
-        override fun toJson(): String = """{
-            |"differs":false
-            |}""".trimMargin()
+    object Identical : PdfCompareResult() {
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to false
+        )
     }
 
     class PageCountDiffers(val expectedPageCount: Int, val actualPageCount: Int) : PdfCompareResult() {
-        override fun toJson(): String = """{
-            |"differs":true,
-            |"reason":"page count differs"
-            |}""".trimMargin()
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to true,
+                "reason" to "page count differs"
+        )
     }
 
     class ContentDiffers(val differentPages: List<PdfPageCompareResult>) : PdfCompareResult() {
-        override fun toJson(): String = """{
-            |"differs":true,
-            |"reason":"page content differs",
-            |"differentPages": ${differentPages.joinToString(prefix = "[", postfix = "]", transform = PdfPageCompareResult::toJson)}
-            |}""".trimMargin()
+        override fun toJson(): JsonObject = jsonObject(
+                "differs" to true,
+                "reason" to "page content differs",
+                "differentPages" to jsonArray(differentPages)
+        )
     }
 }

@@ -2,7 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67534653-4ea1-4551-aab3-640790ad4e99" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfCompare.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfCompare.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/rst/pdftools/compare/lessPages.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/rst/pdftools/compare/small.pdf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_salomonbrys_kotson_kotson_2_5_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_natpryce_hamkrest_1_4_1_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/pdftools_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/pdftools_main.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/pdftools_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/pdftools_test.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt" afterPath="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt" afterPath="$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -31,8 +41,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="42" column="67" lean-forward="false" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+            <state relative-caret-position="97">
+              <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -41,10 +51,10 @@
       <file leaf-file-name="PdfCompareTest.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="34" column="81" lean-forward="false" selection-start-line="34" selection-start-column="81" selection-end-line="34" selection-end-column="81" />
+            <state relative-caret-position="193">
+              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding>
-                <element signature="e#30#209#0" expanded="true" />
+                <element signature="e#30#292#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,23 +82,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PdfComparator.kt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PdfComparator.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+            <state relative-caret-position="167">
+              <caret line="35" column="88" lean-forward="false" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
               <folding>
-                <element signature="e#30#304#0" expanded="true" />
+                <element signature="e#30#433#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PdfCompare.kt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PdfCompare.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfCompare.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-144">
-              <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+            <state relative-caret-position="802">
+              <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
               <folding>
                 <element signature="e#30#289#0" expanded="true" />
               </folding>
@@ -307,8 +317,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1509286411000" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="2430285480" />
+        <entry key="$PROJECT_DIR$" value="1509341020000" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="3108921090" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -447,12 +457,12 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/ImageCompareResult.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/Pdf.java" />
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/Pdf.kt" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/Color.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/Image.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt" />
-        <option value="$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfCompare.kt" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt" />
       </list>
     </option>
   </component>
@@ -540,27 +550,6 @@
               <item name="pdftools" type="b2602c69:ProjectViewProjectNode" />
               <item name="pdftools" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdftools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdftools" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdftools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdftools" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="compare" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pdftools" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pdftools" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
@@ -577,6 +566,10 @@
               <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="compare" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pdftools" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
@@ -600,11 +593,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/rst/pdftools/compare" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare" />
       <recent name="$PROJECT_DIR$/src/test/kotlin" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
-      <recent name="$PROJECT_DIR$/src/test/resources/rst/pdftools/compare" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -619,7 +612,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PdfCompareTest">
+  <component name="RunManager" selected="JUnit.PdfCompareTest.pdfWithDifferentPageCount">
     <configuration name="PdfCompareTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -634,6 +627,56 @@
       <option name="MAIN_CLASS_NAME" value="rst.pdftools.compare.PdfCompareTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PdfCompareTest.pdfWithDifferentPageCount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="rst.pdftools.compare.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="pdftools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="rst.pdftools.compare" />
+      <option name="MAIN_CLASS_NAME" value="rst.pdftools.compare.PdfCompareTest" />
+      <option name="METHOD_NAME" value="pdfWithDifferentPageCount" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PdfCompareTest.pdfWithDifferentPageSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="rst.pdftools.compare.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="pdftools_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="rst.pdftools.compare" />
+      <option name="MAIN_CLASS_NAME" value="rst.pdftools.compare.PdfCompareTest" />
+      <option name="METHOD_NAME" value="pdfWithDifferentPageSize" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -753,22 +796,6 @@
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
     </configuration>
-    <configuration name="build (3)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="pdftools" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-    </configuration>
-    <configuration name="build (4)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="pdftools" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-    </configuration>
     <configuration name="build" type="GroovyScriptRunConfiguration" factoryName="Groovy">
       <module name="pdftools" />
       <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
@@ -779,19 +806,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Groovy.build" />
-      <item index="1" class="java.lang.String" itemvalue="Groovy.build (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Groovy.build (2)" />
-      <item index="3" class="java.lang.String" itemvalue="Groovy.build (3)" />
-      <item index="4" class="java.lang.String" itemvalue="Groovy.build (4)" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.PdfCompareTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.PdfCompareTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.PdfCompareTest.pdfWithDifferentPageSize" />
+      <item index="3" class="java.lang.String" itemvalue="Groovy.build (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Groovy.build (2)" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.PdfCompareTest.pdfWithDifferentPageCount" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.PdfCompareTest" />
-        <item index="1" class="java.lang.String" itemvalue="Groovy.build (4)" />
-        <item index="2" class="java.lang.String" itemvalue="Groovy.build (3)" />
-        <item index="3" class="java.lang.String" itemvalue="Groovy.build (2)" />
-        <item index="4" class="java.lang.String" itemvalue="Groovy.build (1)" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PdfCompareTest.pdfWithDifferentPageCount" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PdfCompareTest.pdfWithDifferentPageSize" />
+        <item index="2" class="java.lang.String" itemvalue="Groovy.build (2)" />
+        <item index="3" class="java.lang.String" itemvalue="Groovy.build (1)" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PdfCompareTest" />
       </list>
     </recent_temporary>
   </component>
@@ -808,29 +835,11 @@
       <workItem from="1509206452452" duration="305000" />
       <workItem from="1509206795218" duration="649000" />
       <workItem from="1509207817597" duration="9873000" />
-      <workItem from="1509258228142" duration="16466000" />
+      <workItem from="1509258228142" duration="22146000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 21m 11s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 21m 37s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 22m 16s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 41m 40s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 42m 34s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PdfCompareTest - 2017.10.29 at 16h 42m 59s.xml">
-      <configuration name="PdfCompareTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PdfCompareTest - 2017.10.29 at 16h 44m 22s.xml">
       <configuration name="PdfCompareTest" configurationId="JUnit" />
     </history-entry>
@@ -843,9 +852,27 @@
     <history-entry file="PdfCompareTest - 2017.10.29 at 16h 48m 34s.xml">
       <configuration name="PdfCompareTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageCount - 2017.10.30 at 06h 40m 10s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageCount" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageCount - 2017.10.30 at 06h 41m 25s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageCount" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageSize - 2017.10.29 at 20h 59m 37s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageSize - 2017.10.29 at 21h 20m 44s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageSize - 2017.10.30 at 06h 35m 15s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageSize" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PdfCompareTest_pdfWithDifferentPageSize - 2017.10.30 at 06h 36m 49s.xml">
+      <configuration name="PdfCompareTest.pdfWithDifferentPageSize" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27293000" />
+    <option name="totallyTimeSpent" value="32973000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -858,6 +885,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -867,8 +895,8 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21225071" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3048433" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21225071" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25071225" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23104435" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1159,26 +1187,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-          <folding>
-            <element signature="e#30#304#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="34" column="81" lean-forward="false" selection-start-line="34" selection-start-column="81" selection-end-line="34" selection-end-column="81" />
-          <folding>
-            <element signature="e#30#209#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/Image.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-22">
@@ -1186,14 +1194,6 @@
           <folding>
             <element signature="e#30#184#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="42" column="67" lean-forward="false" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1213,12 +1213,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="28" column="26" lean-forward="false" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfCompare.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="42" column="41" lean-forward="false" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
+        <state relative-caret-position="802">
+          <caret line="69" column="5" lean-forward="false" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding>
             <element signature="e#30#289#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/kotlin/rst/pdftools/compare/PdfCompareTest.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#30#292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/rst/pdftools/compare/PdfComparator.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="35" column="88" lean-forward="false" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
+          <folding>
+            <element signature="e#30#433#0" expanded="true" />
           </folding>
         </state>
       </provider>

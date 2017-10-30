@@ -1,5 +1,7 @@
 package rst.pdftools.compare
 
+import com.natpryce.hamkrest.assertion.assertThat
+import com.natpryce.hamkrest.isA
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -15,6 +17,9 @@ class PdfCompareTest {
     lateinit var original: InputStream
     lateinit var original2: InputStream
     lateinit var changed: InputStream
+    lateinit var lessPages: InputStream
+    lateinit var small: InputStream
+
     @Rule
     @JvmField
     val folder = TemporaryFolder()
@@ -25,6 +30,8 @@ class PdfCompareTest {
         original = PdfCompareTest::class.java.getResource("original.pdf").openStream()
         original2 = PdfCompareTest::class.java.getResource("original.pdf").openStream()
         changed = PdfCompareTest::class.java.getResource("changed.pdf").openStream()
+        lessPages = PdfCompareTest::class.java.getResource("lessPages.pdf").openStream()
+        small = PdfCompareTest::class.java.getResource("small.pdf").openStream()
 
         diffImageDir = folder.newFolder()
     }
@@ -57,8 +64,41 @@ class PdfCompareTest {
         assertPageContentDiffers(contentDiffers.differentPages[4], 4)
     }
 
+
+    @Test
+    fun pdfWithDifferentPageSize() {
+        val comparator = PdfComparator(diffImageDir)
+        val result = comparator.comparePdfs(expectedFileName, original, small)
+        assertNotNull(result)
+
+        assertThat(result, isA<PdfCompareResult.ContentDiffers>())
+        val contentDiffers = result as PdfCompareResult.ContentDiffers
+
+        assertEquals(5, contentDiffers.differentPages.size)
+
+        assertThat(contentDiffers.differentPages[0], isA<PdfPageCompareResult.SizeDiffers>())
+        assertThat(contentDiffers.differentPages[1], isA<PdfPageCompareResult.SizeDiffers>())
+        assertThat(contentDiffers.differentPages[2], isA<PdfPageCompareResult.SizeDiffers>())
+        assertThat(contentDiffers.differentPages[3], isA<PdfPageCompareResult.SizeDiffers>())
+        assertThat(contentDiffers.differentPages[4], isA<PdfPageCompareResult.SizeDiffers>())
+    }
+
+
+    @Test
+    fun pdfWithDifferentPageCount() {
+        val comparator = PdfComparator(diffImageDir)
+        val result = comparator.comparePdfs(expectedFileName, original, lessPages)
+        assertNotNull(result)
+
+        assertThat(result, isA<PdfCompareResult.PageCountDiffers>())
+        val pageCountDiffers = result as PdfCompareResult.PageCountDiffers
+
+        assertEquals(5, pageCountDiffers.expectedPageCount)
+        assertEquals(2, pageCountDiffers.actualPageCount)
+    }
+
     private fun assertPageContentDiffers(differentPage: PdfPageCompareResult, pageIndex: Int) {
-        assertTrue(differentPage is PdfPageCompareResult.ContentDiffers)
+        assertThat(differentPage, isA<PdfPageCompareResult.ContentDiffers>())
         val contentDiffers = differentPage as PdfPageCompareResult.ContentDiffers
         assertEquals("page index", pageIndex, contentDiffers.pageIndex)
         assertEquals("${diffImageDir.absolutePath}/$expectedFileNameBase.page-$pageIndex-diff.png",
