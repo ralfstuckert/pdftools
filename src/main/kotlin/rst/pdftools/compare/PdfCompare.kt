@@ -1,5 +1,6 @@
 package rst.pdftools.compare
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import us.jimschubert.kopper.typed.BooleanArgument
 import us.jimschubert.kopper.typed.NumericArgument
 import us.jimschubert.kopper.typed.StringArgument
@@ -31,7 +32,7 @@ fun main(args: Array<String>) {
             exitProcess(0)
         }
         else -> {
-            println(compareResult.toJson())
+            println(jacksonObjectMapper().writeValueAsString(compareResult))
             exitProcess(-1)
         }
     }
@@ -60,7 +61,6 @@ fun checkDirectoryParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: S
 
 fun checkFileParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: String): File {
     val path = replaceVariables(checkParameter(pdfArgs, parameter, name))
-    println(path)
     val file = File(path)
     if (!file.exists()) {
         println("file given as parameter $name does not exist")

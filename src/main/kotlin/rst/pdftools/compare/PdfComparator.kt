@@ -1,8 +1,5 @@
 package rst.pdftools.compare
 
-import com.github.salomonbrys.kotson.jsonArray
-import com.github.salomonbrys.kotson.jsonObject
-import com.google.gson.JsonObject
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.rendering.ImageType
 import org.apache.pdfbox.rendering.PDFRenderer
@@ -94,72 +91,35 @@ fun PDDocument.toImage(pageIndex: PageIndex, resolution: Resolution): BufferedIm
 }
 
 
-abstract sealed class PdfPageCompareResult() {
+sealed class PdfPageCompareResult() {
 
-    abstract fun toJson(): JsonObject
-
-    object Identical : PdfPageCompareResult() {
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to false
-        )
-    }
+    object Identical : PdfPageCompareResult()
 
     data class SizeDiffers(val expectedWidth: Int, val expectedHeight: Int,
                            val actualWidth: Int, val actualHeight: Int) : PdfPageCompareResult() {
+        val reason = "size"
+
         constructor(diff: ImageCompareResult.SizeDiffers) : this(diff.expectedWidth, diff.expectedHeight,
                 diff.actualWidth, diff.actualHeight)
-
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to true,
-                "reason" to "size",
-                "expected" to jsonObject(
-                        "width" to expectedWidth,
-                        "height" to expectedHeight
-                ),
-                "actual" to jsonObject(
-                        "width" to actualWidth,
-                        "height" to actualHeight
-                )
-        )
     }
 
     data class ContentDiffers(val pageIndex: PageIndex,
                               val diffPixelCount: Int,
                               val diffImageFile: File) : PdfPageCompareResult() {
-
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to true,
-                "reason" to "content",
-                "pageIndex" to pageIndex,
-                "diffPixelCount" to diffPixelCount,
-                "diffImageFile" to diffImageFile.absolutePath
-        )
+        val reason = "content"
     }
 
 }
 
-abstract sealed class PdfCompareResult {
+sealed class PdfCompareResult {
 
-    abstract fun toJson(): JsonObject
-
-    object Identical : PdfCompareResult() {
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to false
-        )
-    }
+    object Identical : PdfCompareResult()
 
     class PageCountDiffers(val expectedPageCount: Int, val actualPageCount: Int) : PdfCompareResult() {
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to true,
-                "reason" to "page count differs"
-        )
+        val reason = "page count differs"
     }
 
     class ContentDiffers(val differentPages: List<PdfPageCompareResult>) : PdfCompareResult() {
-        override fun toJson(): JsonObject = jsonObject(
-                "differs" to true,
-                "reason" to "page content differs",
-                "differentPages" to jsonArray(differentPages.map { it.toJson() })
-        )
+        val reason = "page content differs"
     }
 }
