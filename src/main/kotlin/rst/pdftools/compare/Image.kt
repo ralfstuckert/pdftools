@@ -33,7 +33,7 @@ fun compareImage(expected: BufferedImage,
     }
 
     if (errorCount == 0) {
-        return ImageCompareResult.Identical()
+        return ImageCompareResult.Identical
     }
 
     return ImageCompareResult.ContentDiffers(errorCount, diffImage)
@@ -42,7 +42,7 @@ fun compareImage(expected: BufferedImage,
 
 sealed class ImageCompareResult() {
 
-    class Identical:ImageCompareResult()
+    object Identical : ImageCompareResult()
 
     data class SizeDiffers(val expectedWidth:Int, val expectedHeight:Int,
                            val actualWidth:Int, val actualHeight:Int):ImageCompareResult()

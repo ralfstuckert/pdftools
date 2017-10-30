@@ -36,27 +36,27 @@ class PdfComparator(val diffImageDirectory: File,
                     return PdfCompareResult.PageCountDiffers(expectedDoc.numberOfPages, actualDoc.numberOfPages)
                 }
 
-                val pageCompareDifferences = mutableListOf<PdfPageCompareResult>()
-
-                for (pageIndex in 0..expectedDoc.numberOfPages - 1) {
-                    val imageCompareResult = expectedDoc.comparePageAsImage(actualDoc, pageIndex, resolution, colorTolerance)
-                    when (imageCompareResult) {
+                val pageCompareDifferences = (0..expectedDoc.numberOfPages - 1).map { pageIndex ->
+                    Pair(pageIndex, expectedDoc.comparePageAsImage(actualDoc, pageIndex, resolution, colorTolerance))
+                }.map { (pageIndex, pageCompareResult) ->
+                    when (pageCompareResult) {
+                        is ImageCompareResult.Identical ->
+                            PdfPageCompareResult.Identical
                         is ImageCompareResult.SizeDiffers ->
-                            pageCompareDifferences.add(PdfPageCompareResult.SizeDiffers(imageCompareResult))
+                            PdfPageCompareResult.SizeDiffers(pageCompareResult)
                         is ImageCompareResult.ContentDiffers -> {
-                            val diffImageFile = writeDiffImage(imageCompareResult.diffImage, diffImageDirectory,
-                                    expectedFileName, pageIndex)
-                            pageCompareDifferences.add(PdfPageCompareResult.ContentDiffers(pageIndex,
-                                    imageCompareResult.diffPixelCount, diffImageFile))
+                            val diffImageFile = writeDiffImage(pageCompareResult.diffImage,
+                                    diffImageDirectory, expectedFileName, pageIndex)
+                            PdfPageCompareResult.ContentDiffers(pageIndex,
+                                    pageCompareResult.diffPixelCount, diffImageFile)
                         }
                     }
-                }
+                }.filter { it != PdfPageCompareResult.Identical }
 
-                if (pageCompareDifferences.isEmpty()) {
-                    return PdfCompareResult.Identical
+                return when (pageCompareDifferences.size) {
+                    0 -> PdfCompareResult.Identical
+                    else -> PdfCompareResult.ContentDiffers(pageCompareDifferences)
                 }
-
-                return PdfCompareResult.ContentDiffers(pageCompareDifferences)
             }
         }
     }
@@ -73,14 +73,12 @@ class PdfComparator(val diffImageDirectory: File,
 
 
 fun String.filename(): Pair<String, String> {
-    val matchResult = """(.+?)(\.[^.]*${'$'}|${'$'})""".toRegex().matchEntire(this)
+    fun MatchResult.asPair(): Pair<String, String> = Pair(this.groupValues[1], this.groupValues[2])
 
-    if (matchResult != null) {
-        val (name, extension) = matchResult.destructured
-        return Pair(name, extension)
-    }
-    return Pair(this, "")
+    val matchResult = """(.+?)(\.[^.]*${'$'}|${'$'})""".toRegex().matchEntire(this)
+    return matchResult?.asPair() ?: Pair(this, "")
 }
+
 
 fun PDDocument.comparePageAsImage(other: PDDocument, pageIndex: PageIndex, resolution: Resolution,
                                   colorDistanceTolerance: Double): ImageCompareResult {
@@ -161,7 +159,7 @@ abstract sealed class PdfCompareResult {
         override fun toJson(): JsonObject = jsonObject(
                 "differs" to true,
                 "reason" to "page content differs",
-                "differentPages" to jsonArray(differentPages)
+                "differentPages" to jsonArray(differentPages.map { it.toJson() })
         )
     }
 }

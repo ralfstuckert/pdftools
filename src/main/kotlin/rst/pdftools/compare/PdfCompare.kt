@@ -39,6 +39,15 @@ fun main(args: Array<String>) {
 }
 
 
+fun replaceVariables(path: String): String {
+    if (path.startsWith("__DOWNLOAD__")) {
+        val home = System.getProperty("user.home")
+        val downloadPath = "$home/Downloads"
+        return path.replace("__DOWNLOAD__", downloadPath)
+    }
+    return path
+}
+
 fun checkDirectoryParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: String): File {
     val file = checkFileParameter(pdfArgs, parameter, name)
     if (!file.isDirectory()) {
@@ -50,7 +59,8 @@ fun checkDirectoryParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: S
 }
 
 fun checkFileParameter(pdfArgs: PdfCompareArgs, parameter: String?, name: String): File {
-    val path = checkParameter(pdfArgs, parameter, name)
+    val path = replaceVariables(checkParameter(pdfArgs, parameter, name))
+    println(path)
     val file = File(path)
     if (!file.exists()) {
         println("file given as parameter $name does not exist")
