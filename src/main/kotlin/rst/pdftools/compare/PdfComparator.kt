@@ -13,7 +13,8 @@ typealias Resolution = Double
 typealias ColorDistanceTolerance = Double
 typealias PageIndex = Int
 
-class PdfComparator(val diffImageDirectory: File,
+
+class PdfComparator @JvmOverloads constructor(val diffImageDirectory: File,
                     val resolution: Resolution = 300.0,
                     val colorTolerance: ColorDistanceTolerance = 0.001) {
 
