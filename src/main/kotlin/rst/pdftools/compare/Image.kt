@@ -4,6 +4,7 @@ import java.awt.Color
 import java.awt.image.BufferedImage
 import java.awt.image.DataBufferInt
 import java.io.IOException
+import java.util.concurrent.atomic.AtomicInteger
 import java.util.stream.IntStream
 
 @Throws(IOException::class)
@@ -20,23 +21,23 @@ fun compareImage(expected: BufferedImage,
     val diffPixel = ( diffImage.raster.dataBuffer as DataBufferInt).data
     val expectedPixel = expected.getRGB(0, 0, width, height, null, 0, width)
     val otherPixel = other.getRGB(0, 0, width, height, null, 0, width)
-    var errorCount = 0
+    var errorCount = AtomicInteger(0)
 
     IntStream.range(0, expectedPixel.size).parallel().forEach { index ->
 
         if (expectedPixel[index].normalizedRgbDistanceTo(otherPixel[index]) > colorDistanceTolerance) {
-            ++errorCount
+            errorCount.incrementAndGet()
             diffPixel[index] = Color.red.rgb
         } else {
             diffPixel[index] = expectedPixel[index]
         }
     }
 
-    if (errorCount == 0) {
+    if (errorCount.get() == 0) {
         return ImageCompareResult.Identical
     }
 
-    return ImageCompareResult.ContentDiffers(errorCount, diffImage)
+    return ImageCompareResult.ContentDiffers(errorCount.get(), diffImage)
 }
 
 

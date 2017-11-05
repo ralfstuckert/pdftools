@@ -59,7 +59,8 @@ class PdfComparator(val diffImageDirectory: File,
     }
 
 
-    private fun writeDiffImage(image: BufferedImage, directory: File, expectedFileName: String, pageIndex: PageIndex): File {
+    private fun writeDiffImage(image: BufferedImage, directory:
+    File, expectedFileName: String, pageIndex: PageIndex): File {
         val (name, ext) = expectedFileName.filename()
         val diffFile = File(directory, "${name}.page-${pageIndex}-diff.png")
         ImageIO.write(image, "png", diffFile)
@@ -84,7 +85,7 @@ fun PDDocument.comparePageAsImage(other: PDDocument, pageIndex: PageIndex, resol
     return compareImage(thisImage, otherImage, colorDistanceTolerance)
 }
 
-@Throws(IOException::class)
+
 fun PDDocument.toImage(pageIndex: PageIndex, resolution: Resolution): BufferedImage {
     val pdfRenderer = PDFRenderer(this)
     return pdfRenderer.renderImageWithDPI(pageIndex, resolution.toFloat(), ImageType.RGB)
