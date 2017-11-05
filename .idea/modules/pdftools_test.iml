@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.id="pdftools:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id="pdftools:test" external.linked.project.path="$MODULE_DIR$/../.." external.root.project.path="$MODULE_DIR$/../.." external.system.id="GRADLE" external.system.module.group="rst.pdftools" external.system.module.type="sourceSet" external.system.module.version="0.1.0" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="kotlin-language" name="Kotlin">
       <configuration version="3" platform="JVM 1.6" useProjectSettings="false">
@@ -34,8 +34,25 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="pdftools_main" />
+    <orderEntry type="library" name="Gradle: us.jimschubert:kopper-typed:0.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.salomonbrys.kotson:kotson:2.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test-junit:1.1.51" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:1.1.51" level="project" />
+    <orderEntry type="library" name="Gradle: us.jimschubert:kopper:0.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-kotlin:2.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:1.1.3" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.1.51" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.pdfbox:pdfbox:2.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: com.natpryce:hamkrest:1.4.1.0" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.pdfbox:fontbox:2.0.4" level="project" />
+    <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+    <orderEntry type="library" name="Gradle: junit:junit:4.12" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="pdftools_main" />
 </module>
