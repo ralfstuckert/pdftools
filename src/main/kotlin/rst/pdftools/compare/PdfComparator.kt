@@ -13,19 +13,26 @@ typealias Resolution = Double
 typealias ColorDistanceTolerance = Double
 typealias PageIndex = Int
 
+data class ComparatorConfig(
+    val diffImageDirectory: File = File("."),
+    val resolution: Resolution = 300.0,
+    val colorTolerance: ColorDistanceTolerance = 0.001
+)
+
 
 class PdfComparator @JvmOverloads constructor(val diffImageDirectory: File,
                     val resolution: Resolution = 300.0,
                     val colorTolerance: ColorDistanceTolerance = 0.001) {
 
+    constructor(config: ComparatorConfig):this(config.diffImageDirectory, config.resolution, config.colorTolerance)
 
     @Throws(IOException::class)
     fun comparePdfs(expected: File, actual: File): PdfCompareResult =
-            comparePdfs(expected.name, expected.inputStream(), actual.inputStream())
+            comparePdfs(expected.inputStream(), actual.inputStream(), expected.name)
 
 
     @Throws(IOException::class)
-    fun comparePdfs(expectedFileName: String, expected: InputStream, actual: InputStream): PdfCompareResult {
+    fun comparePdfs(expected: InputStream, actual: InputStream, expectedFileName: String): PdfCompareResult {
 
         PDDocument.load(actual).use { actualDoc ->
             PDDocument.load(expected).use { expectedDoc ->

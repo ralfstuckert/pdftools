@@ -38,7 +38,7 @@ public class PdfCompareJavaTest {
     @Test
     public void pdfWithIdenticalContent() throws Exception {
         PdfComparator comparator = new PdfComparator(diffImageDir);
-        PdfCompareResult result = comparator.comparePdfs(expectedFileName, original, original2);
+        PdfCompareResult result = comparator.comparePdfs(original, original2, expectedFileName);
         assertNotNull(result);
     }
 

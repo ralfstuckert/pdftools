@@ -39,7 +39,7 @@ class PdfCompareTest {
     @Test
     fun pdfWithIdenticalContent() {
         val comparator = PdfComparator(diffImageDir)
-        val result = comparator.comparePdfs(expectedFileName, original, original2)
+        val result = comparator.comparePdfs(original, original2, expectedFileName)
         assertNotNull(result)
 
         assertTrue(result is PdfCompareResult.Identical)
@@ -49,7 +49,7 @@ class PdfCompareTest {
     @Test
     fun pdfWithDifferentContent() {
         val comparator = PdfComparator(diffImageDir)
-        val result = comparator.comparePdfs(expectedFileName, original, changed)
+        val result = comparator.comparePdfs(original, changed, expectedFileName)
         assertNotNull(result)
 
         assertTrue(result is PdfCompareResult.ContentDiffers)
@@ -68,7 +68,7 @@ class PdfCompareTest {
     @Test
     fun pdfWithDifferentPageSize() {
         val comparator = PdfComparator(diffImageDir)
-        val result = comparator.comparePdfs(expectedFileName, original, small)
+        val result = comparator.comparePdfs(original, small, expectedFileName)
         assertNotNull(result)
 
         assertThat(result, isA<PdfCompareResult.ContentDiffers>())
@@ -87,7 +87,7 @@ class PdfCompareTest {
     @Test
     fun pdfWithDifferentPageCount() {
         val comparator = PdfComparator(diffImageDir)
-        val result = comparator.comparePdfs(expectedFileName, original, lessPages)
+        val result = comparator.comparePdfs(original, lessPages, expectedFileName)
         assertNotNull(result)
 
         assertThat(result, isA<PdfCompareResult.PageCountDiffers>())
@@ -101,7 +101,9 @@ class PdfCompareTest {
         assertThat(differentPage, isA<PdfPageCompareResult.ContentDiffers>())
         val contentDiffers = differentPage as PdfPageCompareResult.ContentDiffers
         assertEquals("page index", pageIndex, contentDiffers.pageIndex)
-        assertEquals("${diffImageDir.absolutePath}/$expectedFileNameBase.page-$pageIndex-diff.png",
-                contentDiffers.diffImageFile.absolutePath)
+        assertEquals(
+            "${diffImageDir.invariantSeparatorsPath}/$expectedFileNameBase.page-$pageIndex-diff.png",
+            contentDiffers.diffImageFile.invariantSeparatorsPath
+        )
     }
 }
