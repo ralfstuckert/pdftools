@@ -24,7 +24,7 @@ fun assertPdfEquals(
     config: ComparatorConfig = ComparatorConfig()
 ) {
     val comparator = PdfComparator(config.diffImageDirectory, config.resolution, config.colorTolerance)
-    val result = comparator.comparePdfs( expected, actual, expectedFileName)
+    val result = comparator.comparePdfs(expected, actual, expectedFileName)
     when (result) {
         is PdfCompareResult.ContentDiffers ->
             throw AssertionError("${result.reason}: ${result.differentPages}")
@@ -34,9 +34,11 @@ fun assertPdfEquals(
     }
 }
 
-fun assertPdfA(pdf:InputStream) {
+fun assertPdfA(pdf: File) = assertPdfA(pdf.inputStream())
+
+fun assertPdfA(pdf: InputStream) {
     val parser = PreflightParser(ByteArrayDataSource(pdf))
-    val result:ValidationResult = try {
+    val result: ValidationResult = try {
         parser.parse()
         val document: PreflightDocument = parser.getPreflightDocument()
         document.use {
@@ -44,7 +46,7 @@ fun assertPdfA(pdf:InputStream) {
             document.getResult()
         }
     } catch (e: SyntaxValidationException) {
-         e.getResult()
+        e.getResult()
     }
 
     if (!result.isValid()) {

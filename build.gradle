@@ -5,7 +5,7 @@ plugins {
     id 'maven'
 }
 
-version = "0.2.2"
+version = "0.2.3"
 group = "com.github.ralfstuckert.pdftools"
 
 repositories {
@@ -18,15 +18,15 @@ application {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile("org.apache.pdfbox:pdfbox:2.0.4")
-    compile("org.apache.pdfbox:preflight:2.0.4")
-    compile("us.jimschubert:kopper-typed:0.0.4")
-    compile("com.github.salomonbrys.kotson:kotson:2.5.0")
-    compile("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.10")
-    testCompile("org.jetbrains.kotlin:kotlin-test")
-    testCompile("org.jetbrains.kotlin:kotlin-test-junit")
-    testCompile("org.jetbrains.kotlin:kotlin-reflect")
-    testCompile("com.natpryce:hamkrest:1.7.0.0")
+    api("org.apache.pdfbox:pdfbox:2.0.4")
+    api("org.apache.pdfbox:preflight:2.0.4")
+    api("us.jimschubert:kopper-typed:0.0.4")
+    api("com.github.salomonbrys.kotson:kotson:2.5.0")
+    api("com.fasterxml.jackson.module:jackson-module-kotlin:2.9.10")
+    testImplementation("org.jetbrains.kotlin:kotlin-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+    testImplementation("org.jetbrains.kotlin:kotlin-reflect")
+    testImplementation("com.natpryce:hamkrest:1.7.0.0")
 }
 
 compileKotlin {
