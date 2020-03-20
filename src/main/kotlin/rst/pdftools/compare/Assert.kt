@@ -1,8 +1,13 @@
 package rst.pdftools.compare
 
+import org.apache.pdfbox.preflight.PreflightDocument
+import org.apache.pdfbox.preflight.ValidationResult
+import org.apache.pdfbox.preflight.exception.SyntaxValidationException
+import org.apache.pdfbox.preflight.parser.PreflightParser
+import org.apache.pdfbox.preflight.utils.ByteArrayDataSource
 import java.io.File
 import java.io.InputStream
-import kotlin.math.exp
+
 
 fun assertPdfEquals(
     expected: File,
@@ -26,5 +31,26 @@ fun assertPdfEquals(
         is PdfCompareResult.PageCountDiffers ->
             throw AssertionError("${result.reason}: expected ${result.expectedPageCount} but is ${result.actualPageCount}")
         else -> return Unit
+    }
+}
+
+fun assertPdfA(pdf:InputStream) {
+    val parser = PreflightParser(ByteArrayDataSource(pdf))
+    val result:ValidationResult = try {
+        parser.parse()
+        val document: PreflightDocument = parser.getPreflightDocument()
+        document.use {
+            document.validate()
+            document.getResult()
+        }
+    } catch (e: SyntaxValidationException) {
+         e.getResult()
+    }
+
+    if (!result.isValid()) {
+        val errorMsg = result.errorsList
+            .map { "${it.errorCode}: ${it.details}" }
+            .joinToString("\n")
+        throw AssertionError("not PDF/A:\n ${errorMsg}")
     }
 }
