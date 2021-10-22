@@ -38,6 +38,15 @@ compileTestKotlin {
 
 
 publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = group
+            artifactId = 'pdftools'
+            version = '1.1'
+
+            from components.java
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"
