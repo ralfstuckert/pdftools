@@ -1,5 +1,7 @@
 package rst.pdftools.compare
 
+import org.apache.pdfbox.Loader
+import org.apache.pdfbox.io.RandomAccessReadBuffer
 import org.apache.pdfbox.pdmodel.PDDocument
 import org.apache.pdfbox.rendering.ImageType
 import org.apache.pdfbox.rendering.PDFRenderer
@@ -34,8 +36,8 @@ class PdfComparator @JvmOverloads constructor(val diffImageDirectory: File,
     @Throws(IOException::class)
     fun comparePdfs(expected: InputStream, actual: InputStream, expectedFileName: String): PdfCompareResult {
 
-        PDDocument.load(actual).use { actualDoc ->
-            PDDocument.load(expected).use { expectedDoc ->
+        Loader.loadPDF(RandomAccessReadBuffer(actual)).use { actualDoc ->
+            Loader.loadPDF(RandomAccessReadBuffer(expected)).use { expectedDoc ->
 
                 if (actualDoc.numberOfPages != expectedDoc.numberOfPages) {
                     return PdfCompareResult.PageCountDiffers(expectedDoc.numberOfPages, actualDoc.numberOfPages)

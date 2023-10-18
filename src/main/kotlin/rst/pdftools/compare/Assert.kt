@@ -1,10 +1,10 @@
 package rst.pdftools.compare
 
+import org.apache.pdfbox.preflight.Format
 import org.apache.pdfbox.preflight.PreflightDocument
 import org.apache.pdfbox.preflight.ValidationResult
 import org.apache.pdfbox.preflight.exception.SyntaxValidationException
 import org.apache.pdfbox.preflight.parser.PreflightParser
-import org.apache.pdfbox.preflight.utils.ByteArrayDataSource
 import java.io.File
 import java.io.InputStream
 
@@ -28,23 +28,30 @@ fun assertPdfEquals(
     when (result) {
         is PdfCompareResult.ContentDiffers ->
             throw AssertionError("${result.reason}: ${result.differentPages}")
+
         is PdfCompareResult.PageCountDiffers ->
             throw AssertionError("${result.reason}: expected ${result.expectedPageCount} but is ${result.actualPageCount}")
+
         else -> return Unit
     }
 }
 
-fun assertPdfA(pdf: File) = assertPdfA(pdf.inputStream())
-
 fun assertPdfA(pdf: InputStream) {
-    val parser = PreflightParser(ByteArrayDataSource(pdf))
-    val result: ValidationResult = try {
-        parser.parse()
-        val document: PreflightDocument = parser.getPreflightDocument()
-        document.use {
-            document.validate()
-            document.getResult()
+    val tmpFile = File.createTempFile("expected-pdf-a", "pdf")
+    tmpFile.deleteOnExit()
+    pdf.use {
+        val out = tmpFile.outputStream()
+        out.use {
+            pdf.copyTo(out)
         }
+    }
+
+    assertPdfA(tmpFile)
+}
+
+fun assertPdfA(pdf: File) {
+    val result: ValidationResult = try {
+        PreflightParser.validate(pdf)
     } catch (e: SyntaxValidationException) {
         e.getResult()
     }
