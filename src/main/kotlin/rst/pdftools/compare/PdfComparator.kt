@@ -71,7 +71,7 @@ class PdfComparator @JvmOverloads constructor(val diffImageDirectory: File,
 
     private fun writeDiffImage(image: BufferedImage, directory:
     File, expectedFileName: String, pageIndex: PageIndex): File {
-        val (name, ext) = expectedFileName.filename()
+        val (name, _) = expectedFileName.filename()
         val diffFile = File(directory, "${name}.page-${pageIndex}-diff.png")
         ImageIO.write(image, "png", diffFile)
         return diffFile
