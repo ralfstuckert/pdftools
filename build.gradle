@@ -26,7 +26,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("com.natpryce:hamkrest:1.7.0.0")
+    testImplementation("com.natpryce:hamkrest:1.8.0.1")
 }
 
 kotlin {
